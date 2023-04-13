@@ -1,0 +1,176 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{indentfirst}
+\usepackage{hyphenat}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\title{``Data Architecture Basics: An Illustrated Guide for Non-Technical Readers'' Notes}
+\author{Pierre Parel}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Introduction to Data Architecture}
+
+\begin{itemize} 
+
+	\item Data architecture is the blueprint for how data is organized, stored, integrated, and used within an organization
+	\item The goal of data structure is to ensure that an organization's data is structured in a way that facilitates efficient and effective use.
+	\item Data architecture allows businesses to organize their data in a way that makes it easier to analyze and use for decision-making.
+
+	\item Data architecture can be complex, especially for large organizations with a lot of data and it can be difficult to ensure that the data is accurate and up-to-date.
+
+\end{itemize}
+
+\section{Scalability in Data Architecture}
+
+\begin{itemize}
+	\item \textbf{Distributed Systems} - A network of computers working together to achieve a common goal. Building blocks of distributed systems are \textit{Nodes}. A \textit{Cluster} is a collection of multiple nodes.
+
+	\item \textbf{High Availability} - The ability of a system to function continually without failure for a long period of time.
+
+	\item \textbf{Fault Tolerant} - The ability of a system to maintain usage during the failure of a component.
+
+	\item \textbf{Hadoop} - A popular cluster-based open-source framework for distributed storage.
+
+	\item \textbf{Storage Resources} - The data storage capabilities of an architecture and a main requirement for all data science operations.
+
+
+	\item \textbf{Synchronous Replication} - Process by which data is written to the primary storage location and a replica or backup location simultaneously.
+
+\end{itemize}
+
+\subsection{CAP Theorem}
+
+The CAP Theorem helps set expectations when it comes to distirbuted systems. It states that no distributed data storage system can have more than two of the following:
+
+\begin{itemize}
+	\item \textbf{Consistency} - every read request returns the most recently written information (or error).
+	\item \textbf{Availability} - every read request receives a non-error response, but the information returned may be old.
+	\item \textbf{Partition Tolerance} - even if messages between nodes fail, the system will sustain operations.
+\end{itemize}
+
+\subsection{The Cloud}
+
+Cloud computing is definitely not some next-step distributed computing;
+it's just a different way to provision and use infrastructure and managed services.
+
+
+Cloud providers are only as good as their security, so this remains a top priority. While no system can be completely fault-tolerant and secure in all cases, the security measures and access permission restraints are severe. However, the CAP Theorem still holds, so no system will be able to solve every
+data concern with absolute certainty.
+
+\begin{itemize}
+
+	\item The Pros of Cloud Architecture
+		\begin{itemize}
+			\item Rapid scalability means the architecture can keep up with the business
+			\item Global accessibility enables comparisons between different markets
+			\item Fewer upfront IT charges
+			\item No hardware requirements
+			\item Cloud service is responsible for fault tolerance
+		\end{itemize}
+
+	\item The Cons of Cloud Architecture
+
+		\begin{itemize}
+			\item Forfeit of data custody means businesses must 
+				trust their cloud provider to protect their data
+		\end{itemize}
+
+\end{itemize}
+
+\subsection{Scalability and the End-User}
+
+One critical part to scaling data architecture is making sure that the end users can interact successfully with the data pipeline.
+
+\subsection{What is the data pipeline?}
+
+\begin{itemize}
+	\item Data pipelines are paths data takes through the architecture once it's been created
+	\item Data pipeline follows the flow of processes and systems that enable the data to be used in the conext of a data project.
+	\item Everything from data collection, storage, acess, cleaning, analysis, and presentation are part of the data pipeline
+	\item Building data pipelines is not a one-off task; continued maintenance and opitimization are a necessary part of the infrastructure.
+\end{itemize}
+
+\section{Security in Data Architecture}
+
+Security includes technologies, techniques, processes, and best practices that guarantee the integrity, availability, and the enforcement of data and information system governance. It encompasses technical protocols and user behavior and usually centers on what behavior to normalize.
+\\
+The three main questions to ask about security are:
+
+\begin{itemize}
+	\item \textbf{AUTHENTICATION}: Is the user who he/she says he/she is?
+
+	\item \textbf{AUTHORIZATION}: To what data does the user have access to?
+
+	\item \textbf{AUDITIBILITY}: Can we see later who accessed what, when?
+\end{itemize}
+
+\subsection{Authentication}
+
+The purpose is to ensure that the user is who (s)he is declaring to be. In data architecture, authentication happens through something the user knows (i.e., a password) plus sometimes for even more security, something (s)he has.
+
+Using \textit{Multi-Factor Authentication}, users must provide at least two proofs that they are who they claim to be when logging in. While this takes longer to sign in, the proof that users are who they claim to be is much stronger.
+
+\textit{Single Sign-On (SSO)} is a system that allows a user to authenticate once and then access a variety of systems based on the authentication. It proves that the user does not need to show ID for each
+purchase since (s)he has already been verified.
+
+\subsubsection{Pros and Cons}
+
+\begin{itemize}
+	\item Pros
+		\begin{itemize}
+			\item Helps evalutate authorizations and can be used to trim permissions wherever possible
+			\item Useful safeguard against malign internal actors or for tracking system errors
+		\end{itemize}
+	\item Cons 
+		\begin{itemize}
+			\item Requires unique IDs for each user
+			\item Logs can take up exorbitatnt space depending on the frequency of access and number of users
+		\end{itemize}
+\end{itemize}
+
+\subsection{Authorization}
+
+Authorization is distinctly different from authentication. 
+
+From an architectural standpoint, this can become expensive, as the additional computing power required for a sandbox environment is never enough (according to developers). However, this sort of system mirroring is both beneficial to services and critical for security so that developers cannot inadvertently modify user data.
+
+\subsubsection{Pros and Cons}
+
+\begin{itemize}
+	\item Pros
+		\begin{itemize}
+			\item Detemine what data to put in archival storage and what to keep in memory
+			\item Can help target compression 
+		\end{itemize}
+	\item Cons 
+		\begin{itemize}
+			\item May result in confirmation bias if users always turn to the same source of information when others are available.
+			\item Not particularly useful without other audit metrics.
+		\end{itemize}
+\end{itemize}
+
+
+\subsection{Auditibility}
+
+Aside from maintaining development environments to ensure data doesn’t get modified unintentionally, knowing who modified what data is also critical when it comes to collaboration on data projects
+
+\subsubsection{Pros and Cons}
+
+\begin{itemize}
+	\item Pros
+		\begin{itemize}
+			\item Accentuates deviations and unsanctioned behavior
+		\end{itemize}
+	\item Cons 
+		\begin{itemize}
+			\item Not particularly useful without other audit metrics
+		\end{itemize}
+\end{itemize}
+\end{document}
+
